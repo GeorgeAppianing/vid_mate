@@ -58,13 +58,7 @@ function Navbar() {
         <span role="img">🍿</span>
         <h1>VidMate</h1>
       </div>
-      <input
-        className="search"
-        type="text"
-        placeholder="Search movies..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
+
       <p className="num-results">
         Found <strong>x</strong> results
       </p>
@@ -72,6 +66,15 @@ function Navbar() {
   );
 }
 
+function Search() {
+  <input
+    className="search"
+    type="text"
+    placeholder="Search movies..."
+    value={query}
+    onChange={(e) => setQuery(e.target.value)}
+  />;
+}
 function Main() {
   const [movies, setMovies] = useState(tempMovieData);
   const [watched, setWatched] = useState(tempWatchedData);
@@ -172,7 +175,6 @@ export default function App() {
   return (
     <>
       <Navbar />
-
       <Main />
     </>
   );
