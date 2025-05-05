@@ -59,11 +59,15 @@ export default function App() {
       <Navbar>
         <NumResults movies={movies} />
       </Navbar>
-      <Main>
-        <WatchedBox>
+      <Main movies={movies}>
+        <Box>
+          <MovieList movies={movies} />
+        </Box>
+
+        <Box>
           <WatchedSummary watched={watched} />
           <WatchedMoviesLst watched={watched} />
-        </WatchedBox>
+        </Box>
       </Main>
     </>
   );
@@ -111,15 +115,10 @@ function Search() {
 }
 
 function Main({ children }) {
-  return (
-    <main className="main">
-      <ListBox />
-      {children}
-    </main>
-  );
+  return <main className="main">{children}</main>;
 }
 
-function ListBox({ movies }) {
+function Box({ children }) {
   const [isOpen1, setIsOpen1] = useState(true);
 
   return (
@@ -130,7 +129,7 @@ function ListBox({ movies }) {
       >
         {isOpen1 ? "–" : "+"}
       </button>
-      {isOpen1 && <MovieList movies={movies} />}
+      {isOpen1 && children}
     </div>
   );
 }
@@ -145,15 +144,15 @@ function MovieList({ movies }) {
   );
 }
 
-function Movie({ movie }) {
+function Movie({ movies }) {
   return (
-    <li key={movie.imdbID}>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
-      <h3>{movie.Title}</h3>
+    <li key={movies.imdbID}>
+      <img src={movies.Poster} alt={`${movies.Title} poster`} />
+      <h3>{movies.Title}</h3>
       <div>
         <p>
           <span>🗓</span>
-          <span>{movie.Year}</span>
+          <span>{movies.Year}</span>
         </p>
       </div>
     </li>
