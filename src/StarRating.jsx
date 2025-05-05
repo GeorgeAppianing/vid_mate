@@ -14,7 +14,7 @@ const textStyle = {
   lineHeight: "1",
   margin: "8",
 };
-export default function StarRating({ maxRating = 5 }) {
+export default function StarRating({ maxRating }) {
   const [rating, setRating] = useState(0);
   const [tempRating, setTempRating] = useState(0);
   return (
